@@ -4,11 +4,11 @@ from pydantic import BaseModel
 class ResponseDTO(BaseModel):
     status: str
     message: str
-    data: dict
-    error: dict
+    data: BaseModel | None = None
+    error: str | None = None
     status_code: int
 
-    def __init__(self, status: str, message: str, data: dict, error: dict, status_code: int):
+    def __init__(self, status: str, message: str, data: BaseModel | None, error: str | None, status_code: int):
         self.status = status
         self.message = message
         self.data = data
